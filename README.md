@@ -4,7 +4,7 @@ Probar LoRaWAN
 Gateway: Raspberry Zero W + RFM95  
 Nodos: ESP8266 + RFM95 + relay  
 
-## Tutorial 2 Gateway
+## Tutorial Gateway
 Este es el segundo tutorial que se ha seguido  
 https://learn.adafruit.com/raspberry-pi-single-channel-lorawan-gateway  
 https://github.com/adafruit/single_chan_pkt_fwd  
@@ -21,21 +21,23 @@ palabras encimadas o se puede desconectar DIO0 del botón A.
 El programa del gateway ```lorawan_gateway.py``` parece funcionar.
 Cuando está encendido se muestra en TTN. Pero no ha recibido packets.
 
-Se pueden ajustar varios parámetros con ```global_conf.json```.  
+Se pueden ajustar varios parámetros en ```global_conf.json```.  
 El valor de frecuencia parece extraño ```"freq": 905100000```  
-Se probó también con ```"freq": 915000000```, no ha recibido packets.
+Se probó también con ```"freq": 915000000```, pero no se recibieron packets.
 RESET está asignado a un pin que no se conecta en las instrucciones,
 pero no es importante. Cuando se ejecuta el programa gateway aparece un
 mensaje que dice RESET unused.
 
 Modificaciones en el archivo  
 ```
-    "freq": 915000000,
+    "freq": 905100000,
     "spread_factor": 7,
     "pin_nss": 11,
     "pin_dio0": 3,
     "pin_rst": 6
 ```
+Ya se recibieron packets. El problema era la frecuencia de transmisión de los nodos,
+debe ser 905.1 MHz, que corresponde al canal 6 en el rango de frecuencias que se usa en América.
 
 ## Tutorial Nodo
 Este tutorial está enfocado en la placa Adafruit Feather y MCCI LoRaWAN LMIC library  
