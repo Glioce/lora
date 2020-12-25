@@ -2,7 +2,7 @@
 
 Probar LoRaWAN  
 Gateway: Raspberry Zero W + RFM95  
-Nodos: ESP8266 + RFM95  
+Nodos: ESP8266 + RFM95 + relay  
 
 ## Tutorial 2 Gateway
 Este es el segundo tutorial que se ha seguido  
