@@ -19,3 +19,6 @@ https://github.com/brucetsao/Fritzing/blob/master/Module%20display%20OLED%20I2C%
 RFM95  
 https://forum.fritzing.org/t/hoperf-rfm95w-lora-module/10011/11  
 https://github.com/adafruit/Fritzing-Library/blob/master/parts/Adafruit%20RFM9x%20LoRa%20Radio.fzpz  
+
+Relay  
+https://github.com/rwaldron/fritzing-components/blob/master/components/keyes-relay.fzpz  
