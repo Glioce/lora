@@ -5,7 +5,7 @@ Gateway: Raspberry Zero W + RFM95
 Nodos: ESP8266 + RFM95 + relay  
 
 ## Tutorial Gateway
-Este es el segundo tutorial que se ha seguido  
+Este es el segundo tutorial que se ha seguido y funciona  
 https://learn.adafruit.com/raspberry-pi-single-channel-lorawan-gateway  
 https://github.com/adafruit/single_chan_pkt_fwd  
 
@@ -18,12 +18,13 @@ rfm9x_check.py
 El programa rfm9x_check.py se puede modificar para que no dibuje
 palabras encimadas o se puede desconectar DIO0 del botón A.
 
-El programa del gateway ```lorawan_gateway.py``` parece funcionar.
-Cuando está encendido se muestra en TTN. Pero no ha recibido packets.
+El programa del gateway ```lorawan_gateway.py``` funciona.
+Cuando está encendido se muestra en TTN y recibe packets.
 
 Se pueden ajustar varios parámetros en ```global_conf.json```.  
-El valor de frecuencia parece extraño ```"freq": 905100000```  
-Se probó también con ```"freq": 915000000```, pero no se recibieron packets.
+El valor de frecuencia parecía extraño ```"freq": 905100000```,
+pero corresponde a la frecuencia del canal 6 905.1 MHz.
+Se probó con ```"freq": 915000000```, pero no se recibieron packets.
 RESET está asignado a un pin que no se conecta en las instrucciones,
 pero no es importante. Cuando se ejecuta el programa gateway aparece un
 mensaje que dice RESET unused.
@@ -40,6 +41,27 @@ Ya se recibieron packets. El problema era la frecuencia de transmisión de los n
 debe ser 905.1 MHz, que corresponde al canal 6 en el rango de frecuencias que se usa en América.
 
 ## Tutorial Nodo
+Este tutorial usa la librería TinyLora y funciona  
+https://learn.adafruit.com/the-things-network-for-feather  
+https://github.com/adafruit/TinyLoRa  
+
+Se modificó el ejemplo ```tinylora_dht11``` de la librería.  
+Se agregaron las claves generadas por TTN, se usa el canal 6
+y se asignaron los pines del sensor y del módulo RFM95.
+```
+// Pinout NodeMCU + RFM95
+TinyLoRa lora = TinyLoRa(D1, D8, D2); //DIO0, NSS, RST
+
+// pin the DHT22 is connected to
+#define DHTPIN D4
+DHT dht(DHTPIN, DHT11);
+
+// ...
+
+lora.setChannel(CH6);
+```
+
+## Tutorial 1 Nodo - NO FUNCIONÓ
 Este tutorial está enfocado en la placa Adafruit Feather y MCCI LoRaWAN LMIC library  
 https://learn.adafruit.com/the-things-network-for-feather  
 https://github.com/mcci-catena/arduino-lmic  
@@ -95,6 +117,12 @@ Anatares LoRa.id
 https://github.com/antaresdocumentation/lorawan-loraid  
 
 ## Otros temas
+Notas de "Primal Cortex"  
+https://primalcortex.wordpress.com/tag/lorawan/  
+
+Trabajar con bytes en TTN  
+https://www.thethingsnetwork.org/docs/devices/bytes.html  
+
 Diseño de antena  
 https://www.thethingsnetwork.org/forum/t/diy-external-antenna-for-gateway/3011  
 
