@@ -51,7 +51,7 @@ El ejemplo ttn_otaa no logra conectarse al gateway. Aparece esto en la consola
 06:34:54.858 -> 13785217: EV_JOIN_TXCOMPLETE: no JoinAccept
 ```
 
-El ejemplo ttn_ap no corre en el ESP8266 (se reinicia constantemente).
+El ejemplo ttn_abp no corre en el ESP8266 (se reinicia constantemente).
 
 Estos temas mencionan formas de solucionar el problema de "no JoinSccept", pero el error tiene otra causa  
 Incrementar tolerancia de reloj  
@@ -59,6 +59,10 @@ https://github.com/mcci-catena/arduino-lorawan/issues/74
 Cambiar spread factor y otras configuraciones  
 https://www.thethingsnetwork.org/forum/t/feather-m0-ev-join-txcomplete-no-joinaccept-problem/38563/6  
 
+Después se probó la librería TinyLora y funcionó. El problema era la frecuencia de
+transmisión. En TinyLora se puede elegir el canal, se usó el el canal 6 (CH6) que
+corresponde a la frecuencia 905.1 MHz, la misma frecuencia que escucha el gateway.
+¿Cómo se puede elegir el canal en MCCI LoRaWAN LMIC library?
 
 
 ## Tutorial 1 Gateway
