@@ -14,4 +14,7 @@ La página tiene enlaces a ejemplos de código.
 https://docs.pycom.io/tutorials/networks/lora/  
 
 LoRa ABP (Authentication By Personalisation)  
-https://docs.pycom.io/tutorials/networks/lora/lorawan-abp/
+Funciona cuando se usa la region LoRa.EU868, en la consola aparece b'' (datos recibidos).  
+Si se cambia la región a LoRa.US915, aparece el error OSError: [Errno 95] EOPNOTSUPP  
+https://docs.pycom.io/tutorials/networks/lora/lorawan-abp/  
+
