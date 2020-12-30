@@ -18,3 +18,9 @@ Funciona cuando se usa la region LoRa.EU868, en la consola aparece b'' (datos re
 Si se cambia la región a LoRa.US915, aparece el error OSError: [Errno 95] EOPNOTSUPP  
 https://docs.pycom.io/tutorials/networks/lora/lorawan-abp/  
 
+
+Usar con Node-RED  
+https://core-electronics.com.au/tutorials/iot-with-lorawan-pycom-the-things-network-and-node-red.html  
+
+Los nodos de TTN ya no se actualizan  
+https://www.thethingsnetwork.org/docs/applications/nodered/  
