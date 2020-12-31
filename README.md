@@ -116,6 +116,9 @@ https://github.com/ttn-zh/ic880a-gateway
 Anatares LoRa.id  
 https://github.com/antaresdocumentation/lorawan-loraid  
 
+LoraNow  
+https://www.arduino.cc/reference/en/libraries/loranow/  
+
 ## Otros temas
 Notas de "Primal Cortex"  
 https://primalcortex.wordpress.com/tag/lorawan/  
