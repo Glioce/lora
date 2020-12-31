@@ -57,9 +57,9 @@ void setup()
   // Initialize LoRa
   Serial.print("Starting LoRa...");
   // define multi-channel sending
-  lora.setChannel(CH6); //MULTI
+  lora.setChannel(CH0); //MULTI
   // set datarate
-  lora.setDatarate(SF7BW125);
+  lora.setDatarate(SF10BW125);
   if(!lora.begin())
   {
     Serial.println("Failed");
