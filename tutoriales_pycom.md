@@ -24,3 +24,16 @@ https://core-electronics.com.au/tutorials/iot-with-lorawan-pycom-the-things-netw
 
 Los nodos de TTN ya no se actualizan  
 https://www.thethingsnetwork.org/docs/applications/nodered/  
+
+
+Tutorial para Registrar Nano-Gateway  
+https://core-electronics.com.au/tutorials/building-a-lorawan-nano-gateway-to-the-things-network.html  
+https://docs.pycom.io/gettingstarted/registration/lora/ttn/#register-a-nano-gateway  
+El código para obtener el ID se debe modificar  
+```binascii.hexlify(wl.mac()[0])[:6] + 'FFFE' + binascii.hexlify(wl.mac()[0])[6:]```  
+
+Fipy no se conectó al WiFi. Lopy sí se conecta.  
+Se usó una versión actualizada del nano-gateway  
+https://github.com/pycom/pycom-libraries/tree/master/examples/lorawan-nano-gateway  
+Aparece un error en ```gateway.py```, se debe agregar la región como se muestra en este tema  
+https://forum.pycom.io/topic/4413/nano-gateway-not-receiving-lorawan-packets  
