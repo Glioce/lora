@@ -19,8 +19,17 @@ Si se cambia la región a LoRa.US915, aparece el error OSError: [Errno 95] EOPNO
 https://docs.pycom.io/tutorials/networks/lora/lorawan-abp/  
 
 
-Usar con Node-RED  
+Usar con Node-RED
 https://core-electronics.com.au/tutorials/iot-with-lorawan-pycom-the-things-network-and-node-red.html  
+Los dos tutoriales (nano-gw y node) que se mencionan en el tema anterior ayudaron a probar downlink con dos módulos Pycom.  
+Los mismos tutoriales, pero en un formato menos amigable  
+https://pycom.io/lopy-lorawan-nano-gateway-using-micropython-and-ttn/  
+
+Para hacer funcionar el nodo se deben desactivar todos los canales (0 a 72) y usar el data rate (DR) correcto  
+https://forum.pycom.io/topic/1284/problem-pairing-otaa-node-to-nano-gateway-in-us-ttn  
+Los DRs disponibles para cada región se indican en la especificación "Regional Parameters"  
+https://lora-alliance.org/sites/default/files/2020-06/rp_2-1.0.1.pdf  
+Los DRs para US915 se muestran en la página 30.  
 
 Los nodos de TTN ya no se actualizan  
 https://www.thethingsnetwork.org/docs/applications/nodered/  
@@ -37,3 +46,6 @@ Se usó una versión actualizada del nano-gateway
 https://github.com/pycom/pycom-libraries/tree/master/examples/lorawan-nano-gateway  
 Aparece un error en ```gateway.py```, se debe agregar la región como se muestra en este tema  
 https://forum.pycom.io/topic/4413/nano-gateway-not-receiving-lorawan-packets  
+
+Documentación de LoRa class Pycom  
+https://docs.pycom.io/firmwareapi/pycom/network/lora/  
