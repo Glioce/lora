@@ -4,6 +4,24 @@ Probar LoRaWAN
 Gateway: Raspberry Zero W + RFM95  
 Nodos: ESP8266 + RFM95 + relay  
 
+## Regreso a MCCI LMiC
+Este tema lista varias librerías LoRa compatibles con Arduino  
+https://www.thethingsnetwork.org/forum/t/overview-of-lorawan-libraries-howto/24692  
+
+MCCI LMiC tiene buena reputación y contiene un "full LoRaWAN stack".  
+https://github.com/mcci-catena/arduino-lmic  
+
+Tal vez conviene usar esta librería  
+https://github.com/ricaun/SimpleLMIC  
+
+Ya se usó la librería MCCI LMiC, pero no funcionó. El detalle es que está configurada
+para usarse con un gw multicanal y solo se han utilizado gw con 1 canal. Se deben usar
+valores fijos para canal (frecuencia), spread factor y bandwith.
+Estos temas pueden ayudar  
+https://github.com/matthijskooijman/arduino-lmic/issues/120  
+https://www.thethingsnetwork.org/forum/t/can-lmic-1-6-be-set-up-to-use-a-single-channel-and-sf/5207  
+
+
 ## Tutorial Gateway
 Este es el segundo tutorial que se ha seguido y funciona  
 https://learn.adafruit.com/raspberry-pi-single-channel-lorawan-gateway  
