@@ -21,6 +21,42 @@ Estos temas pueden ayudar
 https://github.com/matthijskooijman/arduino-lmic/issues/120  
 https://www.thethingsnetwork.org/forum/t/can-lmic-1-6-be-set-up-to-use-a-single-channel-and-sf/5207  
 
+Se moidifcaron los ejemplos de MCCI LMiC deshabilitando los canales como se muestra en el enlace anterior  
+```
+for(int i=0; i<9; i++) { // For EU; for US use i<71
+    if(i != channel) {
+        LMIC_disableChannel(i);
+    }
+}
+// Set data rate (SF) and transmit power for uplink
+LMIC_setDrTxpow(dr, 14);
+```
+El ejemplo ABP provoca que se reinicie el ESP.  
+El ejemplo OTAA no logra joinAccept.  
+
+Se instaló SimpleLMIC y se modificó el ejemplo ```SimpleLMIC_ABP``` de igual forma.
+Está vez funcionó, es extraño, se supone que usa casi el mismo código del ejemplo ABP anterior.  
+Cada uplink va seguido con un downlink en la consola de TTN (¿es porque el nodo lo solicita?),
+pero no lo recibe. ¿Se debe configurar la frecuencia de downlink?  
+
+Primero se debe seleccionar la sub-banda de frecuencias  
+```LMIC_selectSubBand(1);```
+
+Las sub-bandas y las frecuencias de cada canal se pueden ver aquí  
+https://www.baranidesign.com/faq-articles/2019/4/23/lorawan-usa-frequencies-channels-and-sub-bands-for-iot-devices  
+https://www.thethingsnetwork.org/docs/lorawan/frequency-plans.html  
+
+¿Qué signigica Adaptive Data Rate?  
+https://www.thethingsnetwork.org/docs/lorawan/adaptive-data-rate.html  
+
+Aquí se muestra otra forma de desactivar canales  
+https://learn.sparkfun.com/tutorials/esp32-lora-1-ch-gateway-lorawan-and-the-things-network/turning-a-gateway-into-a-device  
+
+No se ha logrado recibir downlinks. Las últimas alternativas que se pueden probar son estas librerías:  
+LMiC de matthijskooijman menciona que ha funcionado en ESP8266, MCCI LMiC no lo menciona  
+https://github.com/matthijskooijman/arduino-lmic  
+Beelan-LoRaWAN es recomendado por el autor de SimpleLMIC. Se configura de forma parecida a LMiC y menciona que recibe downlinks  
+https://github.com/BeelanMX/Beelan-LoRaWAN
 
 ## Tutorial Gateway
 Este es el segundo tutorial que se ha seguido y funciona  
