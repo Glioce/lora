@@ -57,7 +57,8 @@
 // 0x70.
 // APPEUI msb { 0x70, 0xB3, 0xD5, 0x7E, 0xD0, 0x03, 0xA5, 0x85 }
 // APPEUI lsb { 0x85, 0xA5, 0x03, 0xD0, 0x7E, 0xD5, 0xB3, 0x70 }
-static const u1_t PROGMEM APPEUI[8] = { 0x85, 0xA5, 0x03, 0xD0, 0x7E, 0xD5, 0xB3, 0x70 };
+//appeui2 { 0xFB, 0xA7, 0x03, 0xD0, 0x7E, 0xD5, 0xB3, 0x70 }
+static const u1_t PROGMEM APPEUI[8] = { 0xFB, 0xA7, 0x03, 0xD0, 0x7E, 0xD5, 0xB3, 0x70 };
 void os_getArtEui (u1_t* buf) {
   memcpy_P(buf, APPEUI, 8);
 }
@@ -67,7 +68,8 @@ void os_getArtEui (u1_t* buf) {
 // DEVEUI lsb { 0x3E, 0xE1, 0xDA, 0x00, 0x00, 0xAB, 0xF4, 0x98 }
 // lolin dev msb { 0x80, 0x7D, 0x3A, 0x00, 0x00, 0x6E, 0x63, 0x2F }
 // lolin dev lsb { 0x2F, 0x63, 0x6E, 0x00, 0x00, 0x3A, 0x7D, 0x80 }
-static const u1_t PROGMEM DEVEUI[8] = { 0x2F, 0x63, 0x6E, 0x00, 0x00, 0x3A, 0x7D, 0x80 };
+//deveui2 { 0x80, 0x7D, 0x3A, 0x00, 0x00, 0x6E, 0x63, 0x2F }
+static const u1_t PROGMEM DEVEUI[8] = { 0x80, 0x7D, 0x3A, 0x00, 0x00, 0x6E, 0x63, 0x2F };
 void os_getDevEui (u1_t* buf) {
   memcpy_P(buf, DEVEUI, 8);
 }
@@ -77,25 +79,46 @@ void os_getDevEui (u1_t* buf) {
 // practice, a key taken from ttnctl can be copied as-is.
 // AK msb { 0x20, 0x6D, 0xEF, 0x73, 0x4D, 0x5A, 0xD3, 0xBB, 0xF6, 0x0A, 0x08, 0xE5, 0x27, 0xE7, 0xE1, 0x8C }
 // AK lsb { 0x8C, 0xE1, 0xE7, 0x27, 0xE5, 0x08, 0x0A, 0xF6, 0xBB, 0xD3, 0x5A, 0x4D, 0x73, 0xEF, 0x6D, 0x20 }
-static const u1_t PROGMEM APPKEY[16] = { 0x20, 0x6D, 0xEF, 0x73, 0x4D, 0x5A, 0xD3, 0xBB, 0xF6, 0x0A, 0x08, 0xE5, 0x27, 0xE7, 0xE1, 0x8C };
+//akey2 { 0x36, 0xC5, 0xBF, 0x29, 0x28, 0x49, 0x79, 0x00, 0xB3, 0xD6, 0xB6, 0xDB, 0x7E, 0x77, 0x1B, 0x88 }
+static const u1_t PROGMEM APPKEY[16] = { 0x36, 0xC5, 0xBF, 0x29, 0x28, 0x49, 0x79, 0x00, 0xB3, 0xD6, 0xB6, 0xDB, 0x7E, 0x77, 0x1B, 0x88 };
 void os_getDevKey (u1_t* buf) {
   memcpy_P(buf, APPKEY, 16);
 }
 
-static uint8_t mydata[] = "Hello, world!";
+static uint8_t mydata[] = "Hello";
 static osjob_t sendjob;
 
 // Schedule TX every this many seconds (might become longer due to duty
 // cycle limitations).
-const unsigned TX_INTERVAL = 60;
+const unsigned TX_INTERVAL = 30;
 
 // Pin mapping
 const lmic_pinmap lmic_pins = {
   .nss = D8,
   .rxtx = LMIC_UNUSED_PIN,
-  .rst = D4,
-  .dio = {D2, D1, D0},
+  .rst = LMIC_UNUSED_PIN,
+  .dio = {D1, D2, LMIC_UNUSED_PIN},
 }; //A0 //LMIC_UNUSED_PIN
+
+// Define the single channel and data rate (SF) to use
+int channel = 8;
+int dr = DR_SF7;
+
+// Disables all channels, except for the one defined above, and sets the
+// data rate (SF). This only affects uplinks; for downlinks the default
+// channels or the configuration from the OTAA Join Accept are used.
+//
+// Not LoRaWAN compliant; FOR TESTING ONLY!
+//
+void forceTxSingleChannelDr() {
+    for(int i=0; i<72; i++) { // For EU; for US use i<71
+        if(i != channel) {
+            LMIC_disableChannel(i);
+        }
+    }
+    // Set data rate (SF) and transmit power for uplink
+    LMIC_setDrTxpow(dr, 14);
+}
 
 void printHex2(unsigned v) {
   v &= 0xff;
@@ -150,6 +173,10 @@ void onEvent (ev_t ev) {
         }
         Serial.println();
       }
+
+      // Ignore the channels from the Join Accept
+      forceTxSingleChannelDr();
+
       // Disable link check validation (automatically enabled
       // during join, but because slow data rates change max TX
       // size, we don't use it in this example.
@@ -258,6 +285,17 @@ void setup() {
   os_init();
   // Reset the MAC state. Session and pending data transfers will be discarded.
   LMIC_reset();
+
+  // Make LMiC initialize the default channels, choose a channel, and
+  // schedule the OTAA join
+  LMIC_startJoining();
+
+  // LMiC will already have decided to send on one of the 3 default
+  // channels; ensure it uses the one we want
+  LMIC.txChnl = channel;
+
+  // ...and make sure we see the EV_JOINING event being logged
+  os_runloop_once();
 
   // Start job (sending automatically starts OTAA too)
   do_send(&sendjob);

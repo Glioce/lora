@@ -78,20 +78,20 @@ void os_getArtEui (u1_t* buf) { }
 void os_getDevEui (u1_t* buf) { }
 void os_getDevKey (u1_t* buf) { }
 
-static uint8_t mydata[] = "Hello, world!";
+static uint8_t mydata[] = "Hello";
 static osjob_t sendjob;
 
 // Schedule TX every this many seconds (might become longer due to duty
 // cycle limitations).
-const unsigned TX_INTERVAL = 60;
+const unsigned TX_INTERVAL = 30; //60
 
 // Pin mapping
 // Adapted for Feather M0 per p.10 of [feather]
 const lmic_pinmap lmic_pins = {
-    .nss = D8,                       // chip select on feather (rf95module) CS
+    .nss = D8, // chip select on feather (rf95module) CS
     .rxtx = LMIC_UNUSED_PIN,
-    .rst = D4,                       // reset pin
-    .dio = {D2, D1, LMIC_UNUSED_PIN}, // assumes external jumpers [feather_lora_jumper]
+    .rst = LMIC_UNUSED_PIN, //D4, // reset pin
+    .dio = {D1, D2, LMIC_UNUSED_PIN}, // assumes external jumpers [feather_lora_jumper]
                                     // DIO1 is on JP1-1: is io1 - we connect to GPO6
                                     // DIO1 is on JP5-3: is D2 - we connect to GPO5
 };
@@ -202,7 +202,7 @@ void do_send(osjob_t* j){
 void setup() {
 //    pinMode(13, OUTPUT);
     while (!Serial); // wait for Serial to be initialized
-    Serial.begin(115  200);
+    Serial.begin(74880);
     delay(100);     // per sample code on RF_95 test
     Serial.println(F("Starting"));
 
@@ -298,14 +298,25 @@ void setup() {
     // TTN uses SF9 for its RX2 window.
     LMIC.dn2Dr = DR_SF9;
 
+    // Define the single channel to use
+    int channel = 0;
+    // Disable all channels, except for the one defined above. 
+    // FOR TESTING ONLY!
+    for(int i=0; i<71; i++) { // For EU; for US use i<71
+      if(i != channel) {
+        LMIC_disableChannel(i);
+      }
+    }
+
     // Set data rate and transmit power for uplink
-    LMIC_setDrTxpow(DR_SF7,14);
+    LMIC_setDrTxpow(DR_SF7, 14);
 
     // Start job
     do_send(&sendjob);
 }
 
 void loop() {
+    /*
     unsigned long now;
     now = millis();
     if ((now & 512) != 0) {
@@ -314,7 +325,7 @@ void loop() {
     else {
       digitalWrite(13, LOW);
     }
-
+    */
     os_runloop_once();
 
 }
