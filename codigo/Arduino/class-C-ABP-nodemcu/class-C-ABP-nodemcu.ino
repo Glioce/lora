@@ -1,21 +1,9 @@
-/**
- * Example of ABP device
- * Authors: 
- *        Ivan Moreno
- *        Eduardo Contreras
- *  June 2019
- * 
- * This code is beerware; if you see me (or any other collaborator 
- * member) at the local, and you've found our code helpful, 
- * please buy us a round!
- * Distributed as-is; no warranty is given.
- */
 #include <lorawan.h>
 
 //ABP Credentials 
-const char *devAddr = "00000000";
-const char *nwkSKey = "00000000000000000000000000000000";
-const char *appSKey = "00000000000000000000000000000000";
+const char *devAddr = "26021EFF";
+const char *nwkSKey = "8BF5246DEEEABD25B53F3634F4FE3295";
+const char *appSKey = "CB106EE75D5791F720735115256A2E5F";
 
 const unsigned long interval = 10000;    // 10 s interval to send message
 unsigned long previousMillis = 0;  // will store last time message sent
@@ -26,18 +14,20 @@ char outStr[255];
 byte recvStatus = 0;
 
 const sRFM_pins RFM_pins = {
-  .CS = 20,
-  .RST = 9,
-  .DIO0 = 0,
-  .DIO1 = 1,
-  .DIO2 = 2,
-  .DIO5 = 15,
+  .CS = D8, //6,
+  .RST = D3, //7,
+  .DIO0 = D0, //8,
+  .DIO1 = -1, //9,
+  .DIO2 = -1,
+  .DIO5 = -1,
 };
+
 
 void setup() {
   // Setup loraid access
-  Serial.begin(115200);
-  delay(2000);
+  Serial.begin(74880);
+  delay(1000);
+  Serial.println("Start..");
   if(!lora.init()){
     Serial.println("RFM95 not detected");
     delay(5000);
@@ -45,7 +35,7 @@ void setup() {
   }
 
   // Set LoRaWAN Class change CLASS_A or CLASS_C
-  lora.setDeviceClass(CLASS_A);
+  lora.setDeviceClass(CLASS_C);
 
   // Set Data Rate
   lora.setDataRate(SF7BW125);
@@ -60,6 +50,7 @@ void setup() {
 }
 
 void loop() {
+  
   // Check interval overflow
   if(millis() - previousMillis > interval) {
     previousMillis = millis(); 
@@ -75,6 +66,7 @@ void loop() {
 
   recvStatus = lora.readData(outStr);
   if(recvStatus) {
+    Serial.print("====>> ");
     Serial.println(outStr);
   }
   
