@@ -52,7 +52,7 @@ void setup()
   // Initialize LoRa
   Serial.print("Starting LoRa...");
   // define channel to send data on
-  lora.setChannel(CH6);
+  lora.setChannel(CH0);
   // set datarate
   lora.setDatarate(SF7BW125);
     if(!lora.begin())
