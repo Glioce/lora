@@ -25,13 +25,15 @@ char myStr[50];
 char outStr[255];
 byte recvStatus = 0;
 
+// Cuando se usa clase A, debe estar definido el pin que se 
+// conecta a DIO1. De lo contrario el ESP se reinica constantemente.
 const sRFM_pins RFM_pins = {
   .CS = D8, //20,
-  .RST = D3, //9,
+  .RST = D2, //9,
   .DIO0 = D0, //0,
   .DIO1 = D1, //1,
-  .DIO2 = D2, //2,
-  .DIO5 = D4, //15,
+  .DIO2 = -1, //2, //no es necesario definirlo
+  .DIO5 = -1, //15, //no es necesario definirlo
 };
 
 void setup() {

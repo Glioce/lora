@@ -13,6 +13,8 @@ char myStr[50];
 char outStr[255];
 byte recvStatus = 0;
 
+// Si se usa clase C, solo es necesario conectar el pin DIO0.
+// Se pueden enviar y recibir datos.
 const sRFM_pins RFM_pins = {
   .CS = D8, //6,
   .RST = D3, //7,
