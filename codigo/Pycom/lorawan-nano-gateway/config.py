@@ -23,8 +23,10 @@ PORT = 1700
 NTP = "pool.ntp.org"
 NTP_PERIOD_S = 3600
 
-WIFI_SSID = 'Totalplay-B99F' #'Inventoteca_2G'
-WIFI_PASS = 'B99FA5B1ebrhC8e7' #'science_7425'
+#WIFI_SSID = 'Totalplay-B99F'
+#WIFI_PASS = 'B99FA5B1ebrhC8e7'
+WIFI_SSID = 'Inventoteca_2G'
+WIFI_PASS = 'science_7425'
 
 # for EU868
 # LORA_FREQUENCY = 868100000
