@@ -94,6 +94,9 @@ Ya se recibieron packets. El problema era la frecuencia de transmisión de los n
 debe ser 905.1 MHz, que corresponde al canal 6 en el rango de frecuencias que se usa en América.
 También se ha usado la frecuencia 903.9 MHz que corresponde al canal 0.  
 
+## Gateway RPi Zero que permite downlinks
+**Aún no tenemos un Gateway que permita downlinks usando RPi**  
+
 ## Regreso a MCCI LMiC
 Este tema lista varias librerías LoRa compatibles con Arduino  
 https://www.thethingsnetwork.org/forum/t/overview-of-lorawan-libraries-howto/24692  
