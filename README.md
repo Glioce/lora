@@ -5,8 +5,8 @@ Gateway: Raspberry Zero W + RFM95
 Nodos: ESP8266 + RFM95 + relay  
 
 Contenido  
-[Bandas, canales y frecuencias](bandas-canales-y-frecuencias)  
-[Nodo con TinyLoRa]  
+[Bandas, canales y frecuencias](#bandas-canales-y-frecuencias)  
+[Nodo con TinyLoRa](#nodo-con-tinylora)  
 [Nodo con Beelan_LoRaWAN]  
 [Gateway RPi Zero Adafruit]  
 [Gateway RPi Zero que permite downlinks]  
@@ -17,6 +17,26 @@ Contenido
 ## Bandas, canales y frecuencias
 Tablas de frecuencias  
 
+## Nodo con TinyLoRa
+Este tutorial usa la librería TinyLora y funciona  
+https://learn.adafruit.com/the-things-network-for-feather  
+https://github.com/adafruit/TinyLoRa  
+
+Se modificó el ejemplo ```tinylora_dht11``` de la librería.  
+Se agregaron las claves generadas por TTN, se usa el canal 0
+y se asignaron los pines del sensor y del módulo RFM95.
+```
+// Pinout NodeMCU + RFM95
+TinyLoRa lora = TinyLoRa(D1, D8, D2); //DIO0, NSS, RST
+
+// pin the DHT22 is connected to
+#define DHTPIN D4
+DHT dht(DHTPIN, DHT11);
+
+// ...
+
+lora.setChannel(CH0);
+```
 
 ## Regreso a MCCI LMiC
 Este tema lista varias librerías LoRa compatibles con Arduino  
@@ -108,26 +128,6 @@ Modificaciones en el archivo
 Ya se recibieron packets. El problema era la frecuencia de transmisión de los nodos,
 debe ser 905.1 MHz, que corresponde al canal 6 en el rango de frecuencias que se usa en América.
 
-## Tutorial Nodo
-Este tutorial usa la librería TinyLora y funciona  
-https://learn.adafruit.com/the-things-network-for-feather  
-https://github.com/adafruit/TinyLoRa  
-
-Se modificó el ejemplo ```tinylora_dht11``` de la librería.  
-Se agregaron las claves generadas por TTN, se usa el canal 6
-y se asignaron los pines del sensor y del módulo RFM95.
-```
-// Pinout NodeMCU + RFM95
-TinyLoRa lora = TinyLoRa(D1, D8, D2); //DIO0, NSS, RST
-
-// pin the DHT22 is connected to
-#define DHTPIN D4
-DHT dht(DHTPIN, DHT11);
-
-// ...
-
-lora.setChannel(CH6);
-```
 
 ## Tutorial 1 Nodo - NO FUNCIONÓ
 Este tutorial está enfocado en la placa Adafruit Feather y MCCI LoRaWAN LMIC library  
