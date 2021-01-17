@@ -4,8 +4,8 @@ Probar LoRaWAN
 Gateway: Raspberry Zero W + RFM95  
 Nodos: ESP8266 + RFM95 + relay  
 
-Contenido
-[Bandas, canales y frecuencias](https://github.com/Glioce/lora/blob/main/README.md#bandas-canales-y-frecuencias)  
+Contenido  
+[Bandas, canales y frecuencias](#bandas-canales-y-frecuencias)  
 [Nodo con TinyLoRa]  
 [Nodo con Beelan_LoRaWAN]  
 [Gateway RPi Zero Adafruit]  
