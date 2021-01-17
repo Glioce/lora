@@ -4,15 +4,24 @@ Probar LoRaWAN
 Gateway: Raspberry Zero W + RFM95  
 Nodos: ESP8266 + RFM95 + relay  
 
-Contenido  
+Tablas de frecuencias que se deben tener a la mano  
 [Bandas, canales y frecuencias](#bandas-canales-y-frecuencias)  
+
+Nodos que han funcionado  
 [Nodo con TinyLoRa](#nodo-con-tinylora)  
 [Nodo con Beelan_LoRaWAN](#nodo-con-beelan_lorawan)  
-[Gateway RPi Zero Adafruit]  
+
+Gateways que han funcionado  
+[Gateway RPi Zero Adafruit](#gateway-rpi-zero-adafruit)  
 [Gateway RPi Zero que permite downlinks]  
 
+Nodo y gateway usando módulos Pycom  
 [Nodo Pycom]  
 [Nano gateway Pycom]  
+
+Nodos que no han funcionado  
+
+Gateways que no han funcionado  
 
 ## Bandas, canales y frecuencias
 Tablas de frecuencias  
@@ -46,6 +55,44 @@ https://github.com/BeelanMX/Beelan-LoRaWAN
 Tiene 2 modos de funcionamiento: LoRaWAN Class A y LoRaWAN Class C.  
 La clase A recibe downlinks durante un lapso corto de tiempo después de enviar un packet.  
 La clase C recibe todo el tiempo, mientras no esté enviando packets.  
+
+## Gateway RPi Zero Adafruit
+Este es el segundo tutorial que se ha seguido y funciona  
+https://learn.adafruit.com/raspberry-pi-single-channel-lorawan-gateway  
+https://github.com/adafruit/single_chan_pkt_fwd  
+
+Se probó en RPi Zero W con RaspberryOS recién instalado.  
+Los programas de prueba funcionan correctamente  
+```
+blinkatest.py
+rfm9x_check.py
+```
+El programa rfm9x_check.py se puede modificar para que no dibuje
+palabras encimadas en la pantalla OLED o se puede desconectar DIO0 del botón A.
+En las pruebas se ha modificado para que no utilice la pantalla OLED.  
+
+El programa del gateway ```lorawan_gateway.py``` funciona.
+Cuando está encendido se muestra en TTN y recibe packets.  
+
+Se pueden ajustar varios parámetros en `global_conf.json`.  
+El valor de frecuencia parecía extraño ```"freq": 905100000```,
+pero corresponde a la frecuencia del canal 6 905.1 MHz.
+Se probó con ```"freq": 915000000```, pero no se recibieron packets.
+RESET está asignado a un pin que no se conecta en las instrucciones,
+pero no es importante. Cuando se ejecuta el programa gateway aparece un
+mensaje que dice RESET unused.  
+
+Modificaciones en el archivo  
+```
+    "freq": 905100000,
+    "spread_factor": 7,
+    "pin_nss": 11,
+    "pin_dio0": 3,
+    "pin_rst": 6
+```
+Ya se recibieron packets. El problema era la frecuencia de transmisión de los nodos,
+debe ser 905.1 MHz, que corresponde al canal 6 en el rango de frecuencias que se usa en América.
+También se ha usado la frecuencia 903.9 MHz que corresponde al canal 0.  
 
 ## Regreso a MCCI LMiC
 Este tema lista varias librerías LoRa compatibles con Arduino  
@@ -98,43 +145,6 @@ https://learn.sparkfun.com/tutorials/esp32-lora-1-ch-gateway-lorawan-and-the-thi
 No se ha logrado recibir downlinks. Las últimas alternativas que se pueden probar son estas librerías:  
 LMiC de matthijskooijman menciona que ha funcionado en ESP8266, MCCI LMiC no lo menciona  
 https://github.com/matthijskooijman/arduino-lmic  
-
-
-## Tutorial Gateway
-Este es el segundo tutorial que se ha seguido y funciona  
-https://learn.adafruit.com/raspberry-pi-single-channel-lorawan-gateway  
-https://github.com/adafruit/single_chan_pkt_fwd  
-
-Se probó en RPi Zero W con RaspberryOS recién instalado.  
-Los programas de prueba funcionan correctamente  
-```
-blinkatest.py
-rfm9x_check.py
-```
-El programa rfm9x_check.py se puede modificar para que no dibuje
-palabras encimadas o se puede desconectar DIO0 del botón A.
-
-El programa del gateway ```lorawan_gateway.py``` funciona.
-Cuando está encendido se muestra en TTN y recibe packets.
-
-Se pueden ajustar varios parámetros en ```global_conf.json```.  
-El valor de frecuencia parecía extraño ```"freq": 905100000```,
-pero corresponde a la frecuencia del canal 6 905.1 MHz.
-Se probó con ```"freq": 915000000```, pero no se recibieron packets.
-RESET está asignado a un pin que no se conecta en las instrucciones,
-pero no es importante. Cuando se ejecuta el programa gateway aparece un
-mensaje que dice RESET unused.
-
-Modificaciones en el archivo  
-```
-    "freq": 905100000,
-    "spread_factor": 7,
-    "pin_nss": 11,
-    "pin_dio0": 3,
-    "pin_rst": 6
-```
-Ya se recibieron packets. El problema era la frecuencia de transmisión de los nodos,
-debe ser 905.1 MHz, que corresponde al canal 6 en el rango de frecuencias que se usa en América.
 
 
 ## Tutorial 1 Nodo - NO FUNCIONÓ
