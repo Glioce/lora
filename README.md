@@ -7,7 +7,7 @@ Nodos: ESP8266 + RFM95 + relay
 Contenido  
 [Bandas, canales y frecuencias](#bandas-canales-y-frecuencias)  
 [Nodo con TinyLoRa](#nodo-con-tinylora)  
-[Nodo con Beelan_LoRaWAN]  
+[Nodo con Beelan_LoRaWAN](#nodo-con-beelan_lorawan)  
 [Gateway RPi Zero Adafruit]  
 [Gateway RPi Zero que permite downlinks]  
 
@@ -22,7 +22,7 @@ Este tutorial usa la librería TinyLora y funciona
 https://learn.adafruit.com/the-things-network-for-feather  
 https://github.com/adafruit/TinyLoRa  
 
-Se modificó el ejemplo ```tinylora_dht11``` de la librería.  
+Se modificó el ejemplo `tinylora_dht11` de la librería.  
 Se agregaron las claves generadas por TTN, se usa el canal 0
 y se asignaron los pines del sensor y del módulo RFM95.
 ```
@@ -37,6 +37,15 @@ DHT dht(DHTPIN, DHT11);
 
 lora.setChannel(CH0);
 ```
+
+## Nodo con Beelan_LoRaWAN
+Beelan-LoRaWAN es recomendado por el autor de SimpleLMIC. Se 
+configura de forma parecida a LMiC y se pueden recibir downlinks  
+https://github.com/BeelanMX/Beelan-LoRaWAN  
+
+Tiene 2 modos de funcionamiento: LoRaWAN Class A y LoRaWAN Class C.  
+La clase A recibe downlinks durante un lapso corto de tiempo después de enviar un packet.  
+La clase C recibe todo el tiempo, mientras no esté enviando packets.  
 
 ## Regreso a MCCI LMiC
 Este tema lista varias librerías LoRa compatibles con Arduino  
@@ -89,8 +98,7 @@ https://learn.sparkfun.com/tutorials/esp32-lora-1-ch-gateway-lorawan-and-the-thi
 No se ha logrado recibir downlinks. Las últimas alternativas que se pueden probar son estas librerías:  
 LMiC de matthijskooijman menciona que ha funcionado en ESP8266, MCCI LMiC no lo menciona  
 https://github.com/matthijskooijman/arduino-lmic  
-Beelan-LoRaWAN es recomendado por el autor de SimpleLMIC. Se configura de forma parecida a LMiC y menciona que recibe downlinks  
-https://github.com/BeelanMX/Beelan-LoRaWAN
+
 
 ## Tutorial Gateway
 Este es el segundo tutorial que se ha seguido y funciona  
