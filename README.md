@@ -4,6 +4,20 @@ Probar LoRaWAN
 Gateway: Raspberry Zero W + RFM95  
 Nodos: ESP8266 + RFM95 + relay  
 
+Contenido
+#Bandas, canales y frecuencias
+#Nodo con TinyLoRa
+#Nodo con Beelan_LoRaWAN
+#Gateway RPi Zero Adafruit
+#Gateway RPi Zero que permite downlinks
+
+#Nodo Pycom
+#Nano gateway Pycom
+
+## Bandas, canales y frecuencias
+Tablas de frecuencias  
+
+
 ## Regreso a MCCI LMiC
 Este tema lista varias librerías LoRa compatibles con Arduino  
 https://www.thethingsnetwork.org/forum/t/overview-of-lorawan-libraries-howto/24692  
