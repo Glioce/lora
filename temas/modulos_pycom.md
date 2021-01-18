@@ -13,6 +13,8 @@ Tutoriales LoRa
 La siguiente página tiene enlaces a ejemplos de código.  
 https://docs.pycom.io/tutorials/networks/lora/  
 Es más fácil seguir el siguiente tutorial  
+En el tutorial se muestra cómo usar la extensión de TTN para Node-RED, 
+esa estensión ha dejado de funcionar, es mejor utilizar la MQTT API  
 https://core-electronics.com.au/tutorials/iot-with-lorawan-pycom-the-things-network-and-node-red.html  
 Los dos tutoriales (nano-gw y node) que se mencionan en el tema anterior ayudaron a probar downlink con dos módulos Pycom.  
 Los mismos tutoriales, pero en un formato menos amigable  
