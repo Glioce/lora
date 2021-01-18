@@ -26,18 +26,29 @@ Tablas de frecuencias
 Las sub-bandas y las frecuencias de cada canal se pueden ver aquí  
 https://www.baranidesign.com/faq-articles/2019/4/23/lorawan-usa-frequencies-channels-and-sub-bands-for-iot-devices  
 https://www.thethingsnetwork.org/docs/lorawan/frequency-plans.html  
+https://www.thethingsnetwork.org/docs/lorawan/frequencies-by-country.html  
 
 ## Gateway RPi Zero que permite downlinks
 **Aún no tenemos un Gateway que permita downlinks usando RPi**  
 
-## Otras librerías
+## Otras librerías que no implementan LoRaWAN
 Anatares LoRa.id  
 https://github.com/antaresdocumentation/lorawan-loraid  
 
 LoraNow  
 https://www.arduino.cc/reference/en/libraries/loranow/  
 
+LoRa library by sandeep mistry  
+https://randomnerdtutorials.com/esp32-lora-rfm95-transceiver-arduino-ide/  
+
 ## Otros temas
+Tutorial extenso que muestra el registro de nodos y gws en TTN, 
+LMiC, codificar y decodificar en TTN, MQTT usando Mosquitto  
+https://gilberttanner.com/blog/getting-started-with-lorawan-and-the-things-network  
+
+Tutorial que usa TTGO LORA32 y LMiC  
+https://zaragozamakerspace.com/index.php/the-things-network-creacion-de-un-nodo-fisico/  
+
 Notas de "Primal Cortex"  
 https://primalcortex.wordpress.com/tag/lorawan/  
 
