@@ -18,3 +18,5 @@ DHT dht(DHTPIN, DHT11);
 
 lora.setChannel(CH0);
 ```
+
+![Diagrama de conexiones](../diagramas/LoRa%20node%20ESP8266%20-%20LED%20en%20GPIO16.png)
