@@ -4,25 +4,22 @@ Probar LoRaWAN
 Gateway: Raspberry Zero W + RFM95  
 Nodos: ESP8266 + RFM95 + relay  
 
-Tablas de frecuencias que se deben tener a la mano  
-[Bandas, canales y frecuencias](#bandas-canales-y-frecuencias)  
-
 Gateways que han funcionado  
-[Gateway RPi Zero Adafruit](./temas/gw_rpi_ic880a.md)  
+[Gateway RPi Zero Adafruit](./temas/gw_rpi_adafruit.md)  
 [Gateway RPi Zero que permite downlinks]  
 
 Nodos que han funcionado  
-[Nodo con TinyLoRa](#nodo-con-tinylora)  
-[Nodo con Beelan_LoRaWAN](#nodo-con-beelan_lorawan)  
+[Nodo con TinyLoRa](./temas/nodo_tinylora.md)  
+[Nodo con Beelan_LoRaWAN](./temas/nodo_beelan.md)  
 
 Nodo y gateway que funcionan usando módulos Pycom  
-[Nodo y nano-gateway Pycom](#nodo-y-nano-gateway-pycom)  
+[Nodo y nano-gateway Pycom](./temas/modulos_pycom.md)  
 
 Nodos que no han funcionado  
-[Nodo con MCCI LMiC](#nodo-con-mcci-lmic)
+[Nodo con MCCI LMiC](./temas/nodo_mcci_lmic.md)  
 
 Gateways que no han funcionado  
-[Gateway RPi iC880A](#gateway-rpi-ic880a)
+[Gateway RPi iC880A](./temas/gw_rpi_ic880a.md)  
 
 ## Bandas, canales y frecuencias
 Tablas de frecuencias  
