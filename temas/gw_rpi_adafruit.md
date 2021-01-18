@@ -35,3 +35,5 @@ Modificaciones en el archivo
 Ya se recibieron packets. El problema era la frecuencia de transmisión de los nodos,
 debe ser 905.1 MHz, que corresponde al canal 6 en el rango de frecuencias que se usa en América.
 También se ha usado la frecuencia 903.9 MHz que corresponde al canal 0.  
+
+![Diagrama de conexiones](../diagramas/LoRa%20gateway%20RPi%20Zero.png)
