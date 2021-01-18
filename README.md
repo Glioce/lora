@@ -8,7 +8,7 @@ Tablas de frecuencias que se deben tener a la mano
 [Bandas, canales y frecuencias](#bandas-canales-y-frecuencias)  
 
 Gateways que han funcionado  
-[Gateway RPi Zero Adafruit](#/temas/gw_rpi_ic880a.md)  
+[Gateway RPi Zero Adafruit](./temas/gw_rpi_ic880a.md)  
 [Gateway RPi Zero que permite downlinks]  
 
 Nodos que han funcionado  
