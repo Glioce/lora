@@ -31,6 +31,18 @@ https://www.thethingsnetwork.org/docs/lorawan/frequencies-by-country.html
 ## Gateway RPi Zero que permite downlinks
 **Aún no tenemos un Gateway que permita downlinks usando RPi**  
 
+## Usar MQTT en TTN
+La extensión de TTN para Node-RED ya no funciona. La alternativa es usar MQTT.  
+
+Guía para empezar  
+https://www.thethingsnetwork.org/forum/t/mqtt-in-node-red-howto/39909  
+
+Documentación  
+https://www.thethingsnetwork.org/docs/applications/mqtt/quick-start.html  
+
+Flujo de ejemplo para desencriptar payload  
+https://flows.nodered.org/flow/845bb5b8cf788939dd261f472c289f77  
+
 ## Otras librerías que no implementan LoRaWAN
 Anatares LoRa.id  
 https://github.com/antaresdocumentation/lorawan-loraid  
