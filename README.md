@@ -7,13 +7,13 @@ Nodos: ESP8266 + RFM95 + relay
 Tablas de frecuencias que se deben tener a la mano  
 [Bandas, canales y frecuencias](#bandas-canales-y-frecuencias)  
 
+Gateways que han funcionado  
+[Gateway RPi Zero Adafruit](#/temas/gw_rpi_ic880a.md)  
+[Gateway RPi Zero que permite downlinks]  
+
 Nodos que han funcionado  
 [Nodo con TinyLoRa](#nodo-con-tinylora)  
 [Nodo con Beelan_LoRaWAN](#nodo-con-beelan_lorawan)  
-
-Gateways que han funcionado  
-[Gateway RPi Zero Adafruit](#gateway-rpi-zero-adafruit)  
-[Gateway RPi Zero que permite downlinks]  
 
 Nodo y gateway que funcionan usando módulos Pycom  
 [Nodo y nano-gateway Pycom](#nodo-y-nano-gateway-pycom)  
