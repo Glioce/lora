@@ -10,3 +10,9 @@ https://www.cooking-hacks.com/documentation/tutorials/lorawan-for-arduino-raspbe
 Otro 1CH Gateway  
 https://www.hackster.io/TAD2000/ttn-1ch-lora-gateway-a6ab40  
 https://www.hackster.io/ChrisSamuelson/lora-raspberry-pi-single-channel-gateway-cheap-d57d36  
+
+
+Medir voltaje de pila con ESP8266
+Muchos tutoriales recomiendan un divisor de voltaje
+https://ezcontents.org/esp8266-battery-level-meter
+https://www.engineersgarage.com/esp8266/nodemcu-battery-voltage-monitor/
