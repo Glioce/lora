@@ -53,6 +53,11 @@ https://www.arduino.cc/reference/en/libraries/loranow/
 LoRa library by sandeep mistry  
 https://randomnerdtutorials.com/esp32-lora-rfm95-transceiver-arduino-ide/  
 
+## Ahorro de energía
+Si el nodo funciona con batería debe usar la menor cantidad de energía posible.  
+ESP82266 tiene 3 sleep-modes.  
+https://www.espressif.com/sites/default/files/9b-esp8266-low_power_solutions_en_0.pdf  
+
 ## Otros temas
 Tutorial extenso que muestra el registro de nodos y gws en TTN, 
 LMiC, codificar y decodificar en TTN, MQTT usando Mosquitto  
