@@ -22,3 +22,11 @@ https://github.com/adafruit/Fritzing-Library/blob/master/parts/Adafruit%20RFM9x%
 
 Relay  
 https://github.com/rwaldron/fritzing-components/blob/master/components/keyes-relay.fzpz  
+
+Batería 18650  
+https://forum.fritzing.org/t/request-18650-battery-holder/4733/4  
+
+Sensor PIR  
+parece que los 2 son el mismo  
+https://github.com/adafruit/Fritzing-Library/blob/master/parts/PIR%20sensor.fzpz  
+https://github.com/brucetsao/Fritzing/blob/master/PIR%20sensor.fzpz  
