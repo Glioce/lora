@@ -58,6 +58,13 @@ Si el nodo funciona con batería debe usar la menor cantidad de energía posible
 ESP82266 tiene 3 sleep-modes.  
 https://www.espressif.com/sites/default/files/9b-esp8266-low_power_solutions_en_0.pdf  
 
+Código prueba inicial de deep-sleep  
+https://www.losant.com/blog/making-the-esp8266-low-powered-with-deep-sleep  
+
+Tutorial con despertar con pulso de sensor PIR  
+https://diyprojects.io/esp8266-deep-sleep-mode-test-wake-pir-motion-detector/#.YBNTH-nPzIU  
+Menciona modos de configurar WiFi al salir de deep-sleep
+
 ## Otros temas
 Tutorial extenso que muestra el registro de nodos y gws en TTN, 
 LMiC, codificar y decodificar en TTN, MQTT usando Mosquitto  
