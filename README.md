@@ -65,6 +65,15 @@ Tutorial con despertar con pulso de sensor PIR
 https://diyprojects.io/esp8266-deep-sleep-mode-test-wake-pir-motion-detector/#.YBNTH-nPzIU  
 Menciona modos de configurar WiFi al salir de deep-sleep
 
+Ejemplo RTC memory  
+https://github.com/esp8266/Arduino/blob/master/libraries/esp8266/examples/RTCUserMemory/RTCUserMemory.ino
+Cuando se usa deep-sleep el ESP se resetea al despertar. Se puede guardar info en memoria RTC.
+Es mejor que usar EEPROM si son pocos datos.  
+```
+ESP.rtcUserMemoryRead(0, (uint32_t*) &rtcData, sizeof(rtcData));
+ESP.rtcUserMemoryWrite(0, (uint32_t*) &rtcData, sizeof(rtcData));
+```
+
 ## Otros temas
 Tutorial extenso que muestra el registro de nodos y gws en TTN, 
 LMiC, codificar y decodificar en TTN, MQTT usando Mosquitto  
