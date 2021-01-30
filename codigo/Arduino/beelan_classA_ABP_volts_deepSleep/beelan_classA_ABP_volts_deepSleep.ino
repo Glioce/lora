@@ -11,7 +11,7 @@
    El tiempo de espera entre mensajes ya no se hace con millis().
    Se usa ESP.deepSleep para ahorrar energía.
  *********************************************/
-#define DEBUG 1 //activar depuración por puerto serial
+#define DEBUG 0 //activar depuración por puerto serial
 #include <lorawan.h>
 
 //ABP Credentials
@@ -19,7 +19,7 @@ const char *devAddr = "26021EFF";
 const char *nwkSKey = "8BF5246DEEEABD25B53F3634F4FE3295";
 const char *appSKey = "CB106EE75D5791F720735115256A2E5F";
 
-const unsigned long interval = 20e6; //tiempo en micro segundos
+const unsigned long interval = 300e6; //tiempo en micro segundos
 uint32_t counter; // message counter
 
 char outStr[255]; //buffer para guardar mensaje de entrada
