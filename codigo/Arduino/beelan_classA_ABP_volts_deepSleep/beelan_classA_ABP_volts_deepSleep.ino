@@ -45,11 +45,13 @@ const sRFM_pins RFM_pins = {
 */
 
 void setup() {
+  bool iniciado = lora.init();
+  
 #if DEBUG
   Serial.begin(74880);
   //delay(1000);
 
-  if (!lora.init()) {
+  if (!iniciado) {
     Serial.println("RFM95 not detected");
     //delay(5000);
     //return;
